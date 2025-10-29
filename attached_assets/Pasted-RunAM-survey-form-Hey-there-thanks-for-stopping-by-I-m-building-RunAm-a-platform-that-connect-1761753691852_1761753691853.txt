@@ -1,0 +1,97 @@
+RunAM survey form
+Hey there, thanks for stopping by.
+
+I’m building RunAm, a platform that connects parcel owners to travelers or riders already heading to the same destination.
+
+The goal is to make delivery faster, cheaper, and more reliable for everyday people.
+
+
+This short survey (about 3–5 minutes) will help me understand if this idea truly solves a real problem in Nigeria, starting with Akwa Ibom.
+
+Your feedback will go a long way. Thank you for being part of it.
+
+* Indicates required question
+What is your name?
+*
+Where are you based?
+How often do you send or receive parcels (within or outside your state)?  
+*
+Once a week
+Once or twice a month
+Only when necessary
+Rarely
+What method do you currently use for deliveries?
+
+*
+Logistics company (GIG, ABC, etc.)
+Riders (Okada, Bolt, private dispatch)
+Asking friends or family traveling
+Other:
+What frustrates you most about sending parcels?
+It’s too expensive
+It takes too long
+Riders don’t update me
+Poor handling or damaged items
+Other:
+Have you ever trusted someone traveling your route to help you deliver or pick up something?
+
+*
+Yes
+No
+I’d like to, but I’m scared it might go wrong
+What would make you trust a traveler enough to hand them your parcel?
+Verified ID
+Reviews or ratings from other users
+Escrow payment (money released only after delivery)
+Delivery tracking or proof
+Referral or recommendation
+Other:
+ How do you usually pay for deliveries?  
+Bank transfer
+Cash
+POS
+Other:
+ If you could pay or get paid instantly in dollars (USDC) without any stress, would you prefer that over bank transfer?
+
+Yes, faster payments sound great
+Maybe, if it’s easy to use
+No, I’d stick to my bank
+Have you heard of USDC (a dollar-backed stablecoin)?  
+Yes, I’ve used it before
+I’ve heard of it but never used it
+Nope, not at all
+ Would you be open to a platform that lets you pay or receive in USDC without needing to know much about crypto?
+
+Yes, if it’s simple and clear
+Maybe, if it’s explained well
+No, I’d rather stay with naira
+When using delivery services, how important is trust to you?  
+Extremely important
+Somewhat important
+I just want it to be cheap and fast
+If there was an app that linked you with verified travelers going your route —so you could send or receive stuff cheaper, would you use it?
+
+Definitely
+Maybe, depends on how safe it is
+No, I’d rather stick to my usual method
+  What would make you never try a platform like this?  
+What feature would make you say “yeah, this is the one”?  
+If you had to rate how stressful sending or receiving deliveries in Nigeria is (1–10), what would it be?  
+Less stressful
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Very sressful
+Any story or experience you’ve had with delivery that stuck with you?  
+Can we reach out to you later to test the early version of this idea?
+
+Yes
+No
+Maybe
