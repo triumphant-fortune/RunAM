@@ -13,7 +13,7 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
-      <div className="max-w-7xl mx-auto bg-black/40 backdrop-blur-lg rounded-full px-6 lg:px-8 border border-white/10">
+      <div className="max-w-7xl mx-auto backdrop-blur-lg rounded-full px-6 lg:px-8 border border-white/10" style={{ backgroundColor: 'rgba(115, 104, 93, 0.8)' }}>
         <div className="flex items-center justify-between h-14 lg:h-16 w-full">
           {/* Left side: Logo and Navigation */}
           <div className="flex items-center gap-8">
