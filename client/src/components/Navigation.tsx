@@ -8,12 +8,12 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 w-full h-[70px] bg-[#73685D] z-50">
       <div className="absolute top-[12px] left-[25px] right-[25px] h-12 bg-white/10 backdrop-blur-sm border border-white/30 rounded-[10px]">
-        <div className="flex items-center justify-between h-full px-8">
+        <div className="flex items-center justify-between h-full px-4 sm:px-6 lg:px-8">
           {/* Left: Logo + Navigation */}
-          <div className="flex items-center gap-8">
-            <img src={logoImage} alt="RunAm" className="h-8" data-testid="link-logo" />
+          <div className="flex items-center gap-4 lg:gap-8">
+            <img src={logoImage} alt="RunAm" className="h-6 sm:h-8" data-testid="link-logo" />
             
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-4 lg:gap-6">
               <button className="text-white hover:text-[#FFD700] transition-colors font-medium" data-testid="link-how-it-works">
                 How it works
               </button>
@@ -27,11 +27,11 @@ export default function Navigation() {
           </div>
 
           {/* Right: Sign in + Get Started */}
-          <div className="hidden md:flex items-center gap-4">
-            <button className="text-white hover:text-[#FFD700] transition-colors font-medium" data-testid="button-sign-in">
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+            <button className="text-white hover:text-[#FFD700] transition-colors font-medium text-sm lg:text-base" data-testid="button-sign-in">
               Sign in
             </button>
-            <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-6 py-2.5 rounded-full font-semibold transition-colors" data-testid="button-get-started">
+            <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full font-semibold transition-colors text-sm lg:text-base" data-testid="button-get-started">
               Get Started
             </button>
           </div>
