@@ -31,7 +31,7 @@ export default function ForTravelers() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
           <div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="rounded-3xl overflow-hidden shadow-lg">
               <img
                 src={travelerImage}
                 alt="Traveler with backpack"

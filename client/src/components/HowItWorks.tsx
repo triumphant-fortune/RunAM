@@ -46,7 +46,7 @@ export default function HowItWorks() {
             return (
               <div
                 key={step.number}
-                className="relative bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                className="relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                 data-testid={`card-step-${step.number}`}
               >
                 <div className="absolute -top-3 left-6">

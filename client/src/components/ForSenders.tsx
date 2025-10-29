@@ -64,7 +64,7 @@ export default function ForSenders() {
 
           {/* Image */}
           <div className="order-1 lg:order-2">
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="rounded-3xl overflow-hidden shadow-lg">
               <img
                 src={senderImage}
                 alt="Person holding package"

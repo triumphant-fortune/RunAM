@@ -69,7 +69,7 @@ export default function CTA() {
             return (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6"
                 data-testid={`card-cta-feature-${index}`}
               >
                 <div className="flex justify-center mb-4">
