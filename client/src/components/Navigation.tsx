@@ -1,0 +1,121 @@
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import logoImage from '@assets/logo_1761761867719.png';
+
+export default function Navigation() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    console.log(`Scrolling to ${sectionId}`);
+    setMobileMenuOpen(false);
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <div className="flex items-center gap-2 cursor-pointer" data-testid="link-logo">
+            <img src={logoImage} alt="RunAm Logo" className="h-8 lg:h-10" />
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-gray-700 hover:text-runam-green transition-colors font-medium"
+              data-testid="link-how-it-works"
+            >
+              How it works
+            </button>
+            <button
+              onClick={() => scrollToSection('features')}
+              className="text-gray-700 hover:text-runam-green transition-colors font-medium"
+              data-testid="link-features"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection('benefits')}
+              className="text-gray-700 hover:text-runam-green transition-colors font-medium"
+              data-testid="link-benefits"
+            >
+              Benefits
+            </button>
+          </div>
+
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={() => console.log('Sign in clicked')}
+              className="text-gray-700 hover:text-runam-green transition-colors font-medium"
+              data-testid="button-sign-in"
+            >
+              Sign in
+            </button>
+            <Button
+              onClick={() => console.log('Get started clicked')}
+              className="bg-runam-green hover:bg-runam-green/90 text-white px-6"
+              data-testid="button-get-started"
+            >
+              Get Started
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2"
+            data-testid="button-mobile-menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t">
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-left text-gray-700 hover:text-runam-green transition-colors font-medium py-2"
+                data-testid="link-mobile-how-it-works"
+              >
+                How it works
+              </button>
+              <button
+                onClick={() => scrollToSection('features')}
+                className="text-left text-gray-700 hover:text-runam-green transition-colors font-medium py-2"
+                data-testid="link-mobile-features"
+              >
+                Features
+              </button>
+              <button
+                onClick={() => scrollToSection('benefits')}
+                className="text-left text-gray-700 hover:text-runam-green transition-colors font-medium py-2"
+                data-testid="link-mobile-benefits"
+              >
+                Benefits
+              </button>
+              <button
+                onClick={() => console.log('Sign in clicked')}
+                className="text-left text-gray-700 hover:text-runam-green transition-colors font-medium py-2"
+                data-testid="button-mobile-sign-in"
+              >
+                Sign in
+              </button>
+              <Button
+                onClick={() => console.log('Get started clicked')}
+                className="bg-runam-green hover:bg-runam-green/90 text-white"
+                data-testid="button-mobile-get-started"
+              >
+                Get Started
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
