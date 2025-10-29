@@ -6,8 +6,8 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full h-[90px] bg-[#73685D] z-50">
-      <div className="absolute top-[20px] left-[25px] right-[25px] h-14 bg-white/10 backdrop-blur-sm border border-white/30 rounded-[10px]">
+    <nav className="fixed top-0 left-0 right-0 w-full h-[70px] bg-[#73685D] z-50">
+      <div className="absolute top-[12px] left-[25px] right-[25px] h-12 bg-white/10 backdrop-blur-sm border border-white/30 rounded-[10px]">
         <div className="flex items-center justify-between h-full px-8">
           {/* Left: Logo + Navigation */}
           <div className="flex items-center gap-8">
@@ -45,7 +45,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-20 left-6 right-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-4 md:hidden">
+        <div className="absolute top-16 left-6 right-6 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg p-4 md:hidden">
           <div className="flex flex-col gap-4">
             <button className="text-left text-white hover:text-[#FFD700] font-medium" data-testid="link-mobile-how-it-works">
               How it works
