@@ -24,30 +24,22 @@ export default function Hero() {
           RunAM
         </h1>
 
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-semibold mb-4" data-testid="text-hero-tagline">
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-normal mb-6" data-testid="text-hero-tagline">
           Your Route. Their Package. One Simple Connection.
         </h2>
 
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto mb-8" data-testid="text-hero-subtitle">
+        <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-10" data-testid="text-hero-subtitle">
           Join Africa's peer-to-peer delivery network where every trip can earn you more, and every package arrives faster.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex justify-center">
           <Button
-            onClick={() => console.log('For Senders clicked')}
+            onClick={() => console.log('Get Started clicked')}
             size="lg"
-            className="bg-white text-runam-green hover:bg-gray-100 px-8 py-6 text-lg font-semibold min-w-[200px]"
-            data-testid="button-for-senders"
+            className="bg-runam-green hover:bg-runam-green/90 text-white px-10 py-6 text-lg font-semibold rounded-full"
+            data-testid="button-hero-get-started"
           >
-            For Senders
-          </Button>
-          <Button
-            onClick={() => console.log('For Travelers clicked')}
-            size="lg"
-            className="bg-runam-green hover:bg-runam-green/90 text-white px-8 py-6 text-lg font-semibold min-w-[200px]"
-            data-testid="button-for-travelers"
-          >
-            For Travelers
+            Get Started
           </Button>
         </div>
       </div>

@@ -47,7 +47,7 @@ export default function CTA() {
           <Button
             onClick={handleCreateAccount}
             size="lg"
-            className="bg-white text-runam-green hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
+            className="bg-white text-runam-green hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full"
             data-testid="button-create-account"
           >
             Create Account
@@ -56,7 +56,7 @@ export default function CTA() {
             onClick={handleLearnMore}
             size="lg"
             variant="outline"
-            className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+            className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-full"
             data-testid="button-learn-more"
           >
             Learn More

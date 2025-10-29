@@ -12,9 +12,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-transparent backdrop-blur-md z-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
+      <div className="max-w-7xl mx-auto bg-black/40 backdrop-blur-lg rounded-full px-6 lg:px-8 border border-white/10">
+        <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" data-testid="link-logo">
             <img src={logoImage} alt="RunAm Logo" className="h-8 lg:h-10" />
@@ -56,7 +56,7 @@ export default function Navigation() {
             </button>
             <Button
               onClick={() => console.log('Get started clicked')}
-              className="bg-runam-green hover:bg-runam-green/90 text-white px-6"
+              className="bg-runam-green hover:bg-runam-green/90 text-white px-6 rounded-full"
               data-testid="button-get-started"
             >
               Get Started
@@ -107,7 +107,7 @@ export default function Navigation() {
               </button>
               <Button
                 onClick={() => console.log('Get started clicked')}
-                className="bg-runam-green hover:bg-runam-green/90 text-white"
+                className="bg-runam-green hover:bg-runam-green/90 text-white rounded-full"
                 data-testid="button-mobile-get-started"
               >
                 Get Started
