@@ -12,10 +12,29 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: '#73685D' }}>
-      <div className="max-w-7xl mx-auto" style={{ paddingLeft: '19px', paddingRight: '19px', paddingTop: '7px' }}>
-        <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30" style={{ height: '50px' }}>
-          <div className="flex items-center justify-between h-full w-full px-6 lg:px-8">
+    <nav 
+      className="fixed z-50" 
+      style={{ 
+        backgroundColor: '#73685D',
+        width: '1920px',
+        height: '129px',
+        top: '0.08px',
+        left: '-0.17px'
+      }}
+    >
+      <div 
+        className="bg-white/10 backdrop-blur-sm border border-white/30" 
+        style={{ 
+          width: '1860px',
+          height: '64px',
+          top: '32px',
+          left: '25px',
+          position: 'absolute',
+          borderRadius: '10px',
+          borderWidth: '1px'
+        }}
+      >
+        <div className="flex items-center justify-between h-full w-full px-6 lg:px-8">
           {/* Left side: Logo and Navigation */}
           <div className="flex items-center gap-8">
             {/* Logo */}
@@ -75,12 +94,22 @@ export default function Navigation() {
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-          </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 mt-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 px-4">
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div 
+          className="md:hidden py-4 bg-white/10 backdrop-blur-sm border border-white/30 px-4"
+          style={{
+            position: 'absolute',
+            top: '100px',
+            left: '25px',
+            width: '1860px',
+            borderRadius: '10px',
+            borderWidth: '1px'
+          }}
+        >
             <div className="flex flex-col gap-4">
               <button
                 onClick={() => scrollToSection('how-it-works')}
@@ -120,7 +149,6 @@ export default function Navigation() {
             </div>
           </div>
         )}
-      </div>
     </nav>
   );
 }
