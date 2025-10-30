@@ -26,44 +26,43 @@ const features = [
 
 export default function ForTravelers() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-          {/* Content */}
-          <div className="order-1">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A2332] mb-3 sm:mb-4">
-              For Travelers
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-              Turn your trip into extra income by delivering packages
-            </p>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Earn money from trips you're already taking</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Choose deliveries that fit your route</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Safe handoffs with ID verification</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Build your reputation through reviews</span>
-              </li>
-            </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img src={travelerImage} alt="Traveler with backpack" className="w-full h-full object-cover" data-testid="img-traveler" />
+            </div>
           </div>
 
-          {/* Image */}
-          <div className="order-2">
-            <img
-              src="/attached_assets/generated_images/Traveler_with_backpack_at_station_4199c77d.png"
-              alt="Traveler with backpack"
-              className="rounded-xl sm:rounded-2xl shadow-lg w-full h-auto object-cover aspect-square sm:aspect-auto"
-            />
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D6A4F] mb-3 sm:mb-4" data-testid="text-for-travelers-title">
+              For Travelers
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10" data-testid="text-for-travelers-subtitle">
+              Turn your travel plans into earning opportunities while helping others
+            </p>
+
+            <div className="space-y-5 sm:space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="flex gap-4" data-testid={`feature-traveler-${index}`}>
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#DDD6FE] flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-[#7C3AED]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1" data-testid={`text-traveler-feature-${index}-title`}>
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600" data-testid={`text-traveler-feature-${index}-description`}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

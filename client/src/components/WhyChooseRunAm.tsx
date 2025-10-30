@@ -35,32 +35,32 @@ const benefits = [
 
 export default function WhyChooseRunAm() {
   return (
-    <section id="benefits" className="py-20 lg:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4" data-testid="text-why-choose-title">
+    <section id="benefits" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D6A4F] mb-3 sm:mb-4" data-testid="text-why-choose-title">
             Why Choose RunAm
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600" data-testid="text-why-choose-subtitle">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600" data-testid="text-why-choose-subtitle">
             Built with safety, security, and convenience at the core
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <div key={index} className="bg-white rounded-2xl p-8 hover:border-[#2D8A54] border-2 border-transparent transition-all" data-testid={`card-benefit-${index}`}>
-                <div className="mb-6 flex justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#2D8A54]/10 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-[#2D8A54]" />
+              <div key={index} className="bg-gray-50 rounded-xl p-6 text-center" data-testid={`card-benefit-${index}`}>
+                <div className="mb-5 flex justify-center">
+                  <div className="w-14 h-14 rounded-full bg-[#2D6A4F]/10 flex items-center justify-center">
+                    <Icon className="w-7 h-7 text-[#2D6A4F]" />
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-900 mb-3 text-center" data-testid={`text-benefit-${index}-title`}>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3" data-testid={`text-benefit-${index}-title`}>
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600 text-center" data-testid={`text-benefit-${index}-description`}>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed" data-testid={`text-benefit-${index}-description`}>
                   {benefit.description}
                 </p>
               </div>

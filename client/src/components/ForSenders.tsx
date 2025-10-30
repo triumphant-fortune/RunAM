@@ -26,44 +26,43 @@ const features = [
 
 export default function ForSenders() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
-          {/* Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
-            <img
-              src="/attached_assets/generated_images/Man_holding_package_box_09554db5.png"
-              alt="Person sending package"
-              className="rounded-xl sm:rounded-2xl shadow-lg w-full h-auto object-cover aspect-square sm:aspect-auto"
-            />
-          </div>
-
-          {/* Content */}
-          <div className="order-1 lg:order-2">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A2332] mb-3 sm:mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D6A4F] mb-3 sm:mb-4" data-testid="text-for-senders-title">
               For Senders
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-              Send packages affordably and securely with trusted travelers
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10" data-testid="text-for-senders-subtitle">
+              Get your packages delivered faster and more affordably than traditional shipping services
             </p>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Save up to 70% on shipping costs</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Real-time package tracking</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Verified and rated travelers</span>
-              </li>
-              <li className="flex items-start gap-2 sm:gap-3">
-                <span className="text-[#2D8A54] text-xl sm:text-2xl flex-shrink-0">✓</span>
-                <span className="text-base sm:text-lg text-gray-700">Secure escrow payment system</span>
-              </li>
-            </ul>
+
+            <div className="space-y-5 sm:space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index} className="flex gap-4" data-testid={`feature-sender-${index}`}>
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#A7F3D0] flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-[#2D6A4F]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1" data-testid={`text-sender-feature-${index}-title`}>
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600" data-testid={`text-sender-feature-${index}-description`}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img src={senderImage} alt="Person holding package" className="w-full h-full object-cover" data-testid="img-sender" />
+            </div>
           </div>
         </div>
       </div>

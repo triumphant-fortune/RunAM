@@ -9,29 +9,29 @@ export default function Hero() {
         <img src={roadBg} alt="" className="w-full h-full object-cover" />
       </div>
 
-      {/* Content - Positioned in upper sky area */}
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-[1014px] mx-auto pt-12 sm:pt-16 md:pt-20 lg:pt-24">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[#FFD700] mb-3 sm:mb-4 md:mb-6" data-testid="text-hero-title">
+      {/* Content - Positioned in upper sky/cloud area */}
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-16 sm:pt-20 md:pt-24 lg:pt-32">
+        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[140px] font-bold text-[#FFD700] mb-4 sm:mb-6 leading-none" data-testid="text-hero-title">
           RunAM
         </h1>
-
-        {/* Tagline - Figma specs: width 1014px, height 152px */}
-        <h2 className="w-full max-w-[1014px] min-h-[152px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-normal mb-3 sm:mb-4 md:mb-6 flex items-center justify-center" data-testid="text-hero-tagline">
+        
+        {/* Tagline */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-normal mb-4 sm:mb-6 leading-relaxed" data-testid="text-hero-tagline">
           Your Route. Their Package. One Simple Connection.
         </h2>
-
-        {/* Subtitle - Figma specs: width 1014px, height 88px, padding 15px 19px */}
-        <p className="w-full max-w-[1014px] min-h-[88px] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/90 mx-auto mb-5 sm:mb-6 md:mb-8 lg:mb-10 py-[15px] px-[19px] flex items-center justify-center" data-testid="text-hero-subtitle">
+        
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 leading-relaxed px-4" data-testid="text-hero-subtitle">
           Join Africa's peer-to-peer delivery network where every trip can earn you more, and every package arrives faster.
         </p>
 
-        <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-5 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-semibold rounded-full transition-colors" data-testid="button-hero-get-started">
+        <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-8 sm:px-10 md:px-12 py-3 sm:py-3.5 md:py-4 text-base sm:text-lg font-semibold rounded-lg transition-colors" data-testid="button-hero-get-started">
           Get Started
         </button>
       </div>
 
-      {/* Vehicles on Road - Closer positioning, responsive for mobile */}
-      <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-8 md:bottom-8 md:right-12 lg:bottom-12 lg:right-16 w-40 sm:w-56 md:w-64 lg:w-80 xl:w-96 z-0">
+      {/* Vehicles on Road - Bottom right, on the road */}
+      <div className="absolute bottom-0 right-4 sm:right-8 md:right-12 lg:right-20 xl:right-32 w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[450px] z-0">
         <img src={vehiclesImage} alt="" className="w-full h-auto object-contain" />
       </div>
     </section>
