@@ -1,7 +1,11 @@
 import roadBg from '@assets/3770ca3d96ee9ea67bc1e54e199194f52320c22f_1761765621106.jpg';
 import vehiclesImage from '@assets/Frame 13_1761765658410.png';
 
-export default function Hero() {
+interface HeroProps {
+  onGetStarted: () => void;
+}
+
+export default function Hero({ onGetStarted }: HeroProps) {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden pt-[80px]">
       {/* Background Image */}
@@ -25,7 +29,7 @@ export default function Hero() {
           Join Africa's peer-to-peer delivery network where every trip can earn you more, and every package arrives faster.
         </p>
 
-        <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-10 sm:px-10 md:px-12 py-4 sm:py-3.5 md:py-4 text-lg sm:text-lg font-semibold rounded-lg transition-colors min-h-[52px]" data-testid="button-hero-get-started">
+        <button onClick={onGetStarted} className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-10 sm:px-10 md:px-12 py-4 sm:py-3.5 md:py-4 text-lg sm:text-lg font-semibold rounded-lg transition-colors min-h-[52px]" data-testid="button-hero-get-started">
           Get Started
         </button>
       </div>

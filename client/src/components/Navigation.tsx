@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import logoImage from '@assets/logo_1761761867719.png';
 
-export default function Navigation() {
+interface NavigationProps {
+  onGetStarted: () => void;
+  onSignIn: () => void;
+}
+
+export default function Navigation({ onGetStarted, onSignIn }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -29,10 +34,10 @@ export default function Navigation() {
 
           {/* Right: Sign in + Get Started (Desktop) */}
           <div className="hidden md:flex items-center gap-3 lg:gap-4">
-            <button className="text-white hover:text-[#FFD700] transition-colors font-medium text-base lg:text-base" data-testid="button-sign-in">
+            <button onClick={onSignIn} className="text-white hover:text-[#FFD700] transition-colors font-medium text-base lg:text-base" data-testid="button-sign-in">
               Sign In
             </button>
-            <button className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-6 lg:px-6 py-2.5 lg:py-2.5 rounded-lg font-semibold transition-colors text-base lg:text-base min-h-[44px]" data-testid="button-get-started">
+            <button onClick={onGetStarted} className="bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-6 lg:px-6 py-2.5 lg:py-2.5 rounded-lg font-semibold transition-colors text-base lg:text-base min-h-[44px]" data-testid="button-get-started">
               Get Started
             </button>
           </div>
@@ -58,10 +63,10 @@ export default function Navigation() {
               Benefits
             </button>
             <div className="border-t border-white/20 my-3"></div>
-            <button className="block w-full text-left text-white hover:text-[#FFD700] py-3 font-medium text-lg" data-testid="button-mobile-sign-in">
+            <button onClick={onSignIn} className="block w-full text-left text-white hover:text-[#FFD700] py-3 font-medium text-lg" data-testid="button-mobile-sign-in">
               Sign In
             </button>
-            <button className="w-full bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-6 py-3.5 rounded-lg font-semibold transition-colors text-lg min-h-[52px]" data-testid="button-mobile-get-started">
+            <button onClick={onGetStarted} className="w-full bg-[#2D8A54] hover:bg-[#2D8A54]/90 text-white px-6 py-3.5 rounded-lg font-semibold transition-colors text-lg min-h-[52px]" data-testid="button-mobile-get-started">
               Get Started
             </button>
           </div>

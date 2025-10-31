@@ -16,13 +16,13 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
-      <Hero />
+      <Navigation onGetStarted={() => setShowGetStarted(true)} onSignIn={() => setShowSignIn(true)} />
+      <Hero onGetStarted={() => setShowGetStarted(true)} />
       <HowItWorks />
       <WhyChooseRunAm />
       <ForSenders />
       <ForTravelers />
-      <CTA />
+      <CTA onGetStarted={() => setShowGetStarted(true)} />
       <Footer />
       
       <GetStartedModal isOpen={showGetStarted} onClose={() => setShowGetStarted(false)} />

@@ -1,5 +1,9 @@
 import { Smartphone, Lock, Headphones } from 'lucide-react';
 
+interface CTAProps {
+  onGetStarted: () => void;
+}
+
 const features = [
   {
     icon: Smartphone,
@@ -18,7 +22,7 @@ const features = [
   },
 ];
 
-export default function CTA() {
+export default function CTA({ onGetStarted }: CTAProps) {
   return (
     <section className="py-24 lg:py-24 bg-[#2D8A54] text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -30,7 +34,7 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16 max-w-2xl mx-auto">
-          <button className="bg-white text-[#2D8A54] hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-full transition-colors min-h-[56px]" data-testid="button-create-account">
+          <button onClick={onGetStarted} className="bg-white text-[#2D8A54] hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-full transition-colors min-h-[56px]" data-testid="button-create-account">
             Create Account
           </button>
           <button className="border-2 border-white text-white hover:bg-white/10 px-10 py-4 text-lg font-semibold rounded-full transition-colors min-h-[56px]" data-testid="button-learn-more">
