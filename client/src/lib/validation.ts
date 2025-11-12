@@ -116,3 +116,24 @@ export const validateFullName = (name: string): { valid: boolean; error?: string
   
   return { valid: true };
 };
+
+export const validateRequired = (value: string, fieldName: string): { valid: boolean; error?: string } => {
+  if (!value || !value.trim()) {
+    return { valid: false, error: `${fieldName} is required` };
+  }
+  return { valid: true };
+};
+
+export const validatePositiveNumber = (value: string, fieldName: string): { valid: boolean; error?: string } => {
+  const num = parseFloat(value);
+  
+  if (isNaN(num)) {
+    return { valid: false, error: `${fieldName} must be a valid number` };
+  }
+  
+  if (num <= 0) {
+    return { valid: false, error: `${fieldName} must be greater than 0` };
+  }
+  
+  return { valid: true };
+};
