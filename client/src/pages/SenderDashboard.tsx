@@ -3,6 +3,8 @@ import { useState } from 'react';
 import logoImage from '@assets/logo_1761761867719.png';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import StarRating from '@/components/StarRating';
+import WalletButton from '@/components/WalletButton';
+import ConnectWalletModal from '@/components/ConnectWalletModal';
 import { validateRequired, validatePositiveNumber } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -278,7 +280,8 @@ export default function SenderDashboard() {
           >
             <Menu className="w-6 h-6 text-gray-600" />
           </button>
-          <div className="flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-3 ml-auto">
+            <WalletButton />
             <button className="relative" data-testid="button-notifications">
               <Bell className="w-6 h-6 text-gray-600" />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"></span>
@@ -624,6 +627,8 @@ export default function SenderDashboard() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <ConnectWalletModal />
     </div>
   );
 }

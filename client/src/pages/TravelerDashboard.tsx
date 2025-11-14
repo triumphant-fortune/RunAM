@@ -1,6 +1,8 @@
 import { LayoutDashboard, Plane, Bell, User, Menu, X, MapPin, Package, Calendar, DollarSign, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import logoImage from '@assets/logo_1761761867719.png';
+import WalletButton from '@/components/WalletButton';
+import ConnectWalletModal from '@/components/ConnectWalletModal';
 import { validateRequired, validatePositiveNumber, validateFutureDate } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 
@@ -284,7 +286,8 @@ export default function TravelerDashboard() {
           >
             <Menu className="w-6 h-6 text-gray-600" />
           </button>
-          <div className="flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-3 ml-auto">
+            <WalletButton />
             <button className="relative" data-testid="button-notifications">
               <Bell className="w-6 h-6 text-gray-600" />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"></span>
@@ -611,6 +614,8 @@ export default function TravelerDashboard() {
           ) : null}
         </div>
       </div>
+
+      <ConnectWalletModal />
     </div>
   );
 }
