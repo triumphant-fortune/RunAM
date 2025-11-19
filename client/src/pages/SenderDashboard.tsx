@@ -5,6 +5,7 @@ import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import StarRating from '@/components/StarRating';
 import WalletButton from '@/components/WalletButton';
 import ConnectWalletModal from '@/components/ConnectWalletModal';
+import NftReceiptModal from '@/components/NftReceiptModal';
 import { validateRequired, validatePositiveNumber } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -44,9 +45,11 @@ export default function SenderDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [bookingStep, setBookingStep] = useState<'form' | 'travelers'>('form');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showNftReceipt, setShowNftReceipt] = useState(false);
   const [selectedTraveler, setSelectedTraveler] = useState<typeof mockTravelers[0] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const { toast } = useToast();
 
@@ -160,6 +163,7 @@ export default function SenderDashboard() {
     };
 
     setBookings(prev => [newBooking, ...prev]);
+    setCurrentBooking(newBooking);
     setIsLoading(false);
     setShowConfirmModal(false);
     setSelectedTraveler(null);
@@ -173,12 +177,7 @@ export default function SenderDashboard() {
     });
     setBookingStep('form');
     
-    toast({
-      title: 'Booking confirmed!',
-      description: `Your parcel has been booked with ${newBooking.traveler.name}. Check "My Parcels" tab for details.`,
-    });
-
-    setActiveTab('parcels');
+    setShowNftReceipt(true);
   };
 
   return (
@@ -629,6 +628,26 @@ export default function SenderDashboard() {
       </Dialog>
 
       <ConnectWalletModal />
+
+      {currentBooking && (
+        <NftReceiptModal
+          isOpen={showNftReceipt}
+          onClose={() => {
+            setShowNftReceipt(false);
+            setActiveTab('parcels');
+            toast({
+              title: 'Booking confirmed!',
+              description: `Your parcel has been booked with ${currentBooking.traveler.name}. Check "My Parcels" tab for details.`,
+            });
+          }}
+          bookingId={currentBooking.id}
+          route={`${currentBooking.parcelData.pickupLocation} → ${currentBooking.parcelData.deliveryLocation}`}
+          amount={currentBooking.total}
+          status="PENDING"
+          timestamp={currentBooking.createdAt.toLocaleString()}
+          nftTokenId={`0.0.${Math.floor(Math.random() * 9000000) + 1000000}`}
+        />
+      )}
     </div>
   );
 }
