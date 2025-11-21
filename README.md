@@ -174,49 +174,46 @@ Conducted via WhatsApp & Telegram groups:
 - **Top request**: "Receipt I can verify instantly"
 
 **Sample Quote**:  
-*"I waited 5 days for my cousin to travel, then he ghosted. I'd pay ₦5 for a guaranteed receipt."* — Uyo respondent
+*It’s too expensive, It takes too long, Riders don’t update me, Poor handling or damaged items"* — Majority of respondents
 
 **Limitation**: Small sample size (n=13). Next step: 100-user pilot.
 
-### Feedback Loops
-- WhatsApp/Telegram traveler groups for rapid feedback on booking/delivery UX.
-- In-app toasts/modals capture failure states; support/admin audit view for dispute triage.
-- Planned pilot: 100 users in Akwa Ibom; measure conversion, mint success rate, disputes resolved via receipts.
+---
+
+### **Early Adopters: Crypto-Native & Commerce-Focused Users**
+
+**Segment 1: Digital Currency Users**  
+- **Who**: 200+ users active in local crypto Telegram groups
+- **Why**: Already comfortable with stablecoins, understand gas fee trade-offs
+- **Traction**: 8 of 13 survey respondents came from this group
+
+**Segment 2: Frequent Online Shoppers**  
+- **Who**: Nigerians who regularly purchase from out-of-state vendors
+- **Pain**: Currently pay ₦2,000-₦5,000 for unreliable dispatch riders
+- **Value Prop**: 60% cheaper, instant booking, verifiable proof
+
+**Segment 3: Small Business Owners**  
+- **Who**: Fashion vendors, gadget sellers who ship to customers nationwide
+- **Why**: Need reliable delivery to scale beyond their city
+- **Entry point**: Offer them "delivery-as-a-service" via RunAm
 
 ---
 
-## Roadmap & GTM
+### **Ecosystem Development Strategy**
 
-**0-30 days (Hackathon)**  
-- ✅ Testnet HTS receipts (booking + delivery), HashScan links in UI, support/admin audit view.
+**Current State**: Hedera has limited grassroots community presence in Nigeria compared to more established chains.
 
-**30-60 days (Pilot)**  
-- 100-user pilot in Akwa Ibom; integrate DB persistence; add auth/roles; harden idempotency.  
-- Collect metrics: booking->delivery conversion, mint success rate, dispute resolution time.
+**Our Approach**: **Build the community while building the product.**
 
-**60-90 days (Scale-ready)**  
-- Mainnet readiness (fee budgeting), traveler KYC, USDC-HTS escrow.  
-- GTM: Superteam NG community, campus/airport travel groups, local micro-influencers.
+**Initiative**: **Hedera Africa Builders Program** (working title)
+- **Goal**: Establish the first dedicated community of Hedera users, developers, and advocates in West Africa
+- **Strategy**: 
+  - Leverage RunAm as the **flagship use case** to demonstrate real-world utility
+  - Partner with local fintechs and vendors to create USDC-Hedera payment rails
+  - Host educational sessions on micro-payment benefits for emerging markets
+- **Timeline**: Start with hackathon cohort, expand to 100 active members by Q2 2026
 
-**Hedera Impact Targets**  
-- Every delivery mints 2 NFTs: +0.04 TPS at 100K monthly deliveries.  
-- Drives Hedera account creation (sender + traveler) and repeat on-chain actions.
-
----
-
-## FAQ for Judges
-- **Why NFTs, not DB receipts?** On-chain receipts are tamper-proof, portable, and instantly verifiable via HashScan; screenshots in WhatsApp are not.
-- **Why Hedera over Web2/EVM?** Sub-cent fees and 3s finality make micro-logistics viable; no contract deployment needed for receipts.
-- **Does this exist cross-chain?** Similar “proof” exists elsewhere, but dual-HTS receipts for logistics with sub-cent cost is new territory on Hedera.
-- **What’s on-chain vs off-chain?** Only opaque IDs/route/amount and status go on-chain (no PII). Bookings, users, and disputes stay off-chain; support/admin uses on-chain receipts for evidence.
-- **How do users see receipts?** HashScan links in booking/delivery modals and dashboards; support/admin audit table lists both receipts per booking.
-
-### **Early Adopters: Superteam NG**
-- **500+ crypto-native Nigerians** in community
-- **Opportunity**: Convert Solana maxis by showing Hedera's micro-fee advantage
-- **Distribution**: Content writer network for GTM
-
----
+**This positions RunAm as both a product and a platform**—not just consuming the ecosystem, but actively expanding it.
 
 ## Future Roadmap
 
@@ -224,9 +221,9 @@ Conducted via WhatsApp & Telegram groups:
 - NFT receipts via Hedera HTS
 
 **Phase 2 (Late Jan 2026)**
-- **Pilot Launch**: 50 users in Akwa Ibom
-- **Integrate**: USDC-HTS escrow, NIN API
-- **Target**: 100 deliveries/week
+- **Pilot**: 50 users in Akwa Ibom (mix of crypto users and commerce sellers)
+- **Community**: Launch "Hedera Africa Builders" with 25 founding members
+- **Integrate**: USDC-HTS escrow, NIN verification API
 
 **Phase 3 (Q2 2026)**
 - Expand to Calabar, PH, Ebonyi
@@ -234,7 +231,13 @@ Conducted via WhatsApp & Telegram groups:
 
 **Phase 4 (Q3 2026)**
 - 10K MAU
-- Hedera mainnet launch
+- Mainnet launch
+- 500 active community members
+
+**Phase 5 (Q4 2026)**
+- 50K travelers
+- 100K daily Hedera transactions
+- **Establish Hedera as the go-to chain for African micro-transactions**
 
 ---
 
