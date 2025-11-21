@@ -6,9 +6,17 @@ interface PhoneVerificationProps {
   phoneNumber: string;
   onVerified: () => void;
   onResend: () => void;
+  autoVerifyDemo?: boolean;
 }
 
-export default function PhoneVerification({ phoneNumber, onVerified, onResend }: PhoneVerificationProps) {
+const DEMO_CODE = '123456';
+
+export default function PhoneVerification({
+  phoneNumber,
+  onVerified,
+  onResend,
+  autoVerifyDemo = true,
+}: PhoneVerificationProps) {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const [isVerifying, setIsVerifying] = useState(false);
   const [error, setError] = useState('');
@@ -24,6 +32,13 @@ export default function PhoneVerification({ phoneNumber, onVerified, onResend }:
       setCanResend(true);
     }
   }, [countdown]);
+
+  useEffect(() => {
+    if (!autoVerifyDemo) return;
+    setCode(DEMO_CODE.split(''));
+    verifyCode(DEMO_CODE);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoVerifyDemo]);
 
   const handleChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return;
@@ -72,7 +87,7 @@ export default function PhoneVerification({ phoneNumber, onVerified, onResend }:
 
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    if (codeToVerify === '123456') {
+    if (codeToVerify === DEMO_CODE) {
       onVerified();
     } else {
       setError('Invalid verification code. Try 123456 for demo.');

@@ -6,6 +6,8 @@ import StarRating from '@/components/StarRating';
 import WalletButton from '@/components/WalletButton';
 import ConnectWalletModal from '@/components/ConnectWalletModal';
 import NftReceiptModal from '@/components/NftReceiptModal';
+import { apiRequest } from '@/lib/queryClient';
+import { useWallet } from '@/contexts/WalletContext';
 import { validateRequired, validatePositiveNumber } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -46,12 +48,19 @@ export default function SenderDashboard() {
   const [bookingStep, setBookingStep] = useState<'form' | 'travelers'>('form');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showNftReceipt, setShowNftReceipt] = useState(false);
+   const [bookingReceipt, setBookingReceipt] = useState<{
+    tokenId?: string;
+    serial?: number;
+    hashscanUrl?: string;
+    transactionId?: string;
+  } | null>(null);
   const [selectedTraveler, setSelectedTraveler] = useState<typeof mockTravelers[0] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [currentBooking, setCurrentBooking] = useState<Booking | null>(null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const { toast } = useToast();
+  const { walletAddress } = useWallet();
 
   const [formData, setFormData] = useState<ParcelFormData>({
     pickupLocation: '',
@@ -147,9 +156,6 @@ export default function SenderDashboard() {
     if (!selectedTraveler) return;
 
     setIsLoading(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
     const pricing = calculatePricing();
     const newBooking: Booking = {
       id: `BK-${Date.now()}`,
@@ -164,10 +170,34 @@ export default function SenderDashboard() {
 
     setBookings(prev => [newBooking, ...prev]);
     setCurrentBooking(newBooking);
-    setIsLoading(false);
     setShowConfirmModal(false);
     setSelectedTraveler(null);
-    
+
+    const route = `${formData.pickupLocation} → ${formData.deliveryLocation}`;
+    try {
+      const res = await apiRequest('POST', `/api/bookings/${newBooking.id}/mint-booking`, {
+        bookingId: newBooking.id,
+        senderId: walletAddress || 'demo-sender',
+        route,
+        usdcAmount: pricing.total,
+      });
+      const receipt = await res.json();
+      setBookingReceipt(receipt);
+      setShowNftReceipt(true);
+      toast({
+        title: 'Booking confirmed on Hedera',
+        description: 'NFT receipt minted. View on HashScan.',
+      });
+    } catch (err: any) {
+      toast({
+        title: 'Mint failed',
+        description: err?.message || 'Could not mint booking receipt.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+
     setFormData({
       pickupLocation: '',
       deliveryLocation: '',
@@ -176,8 +206,6 @@ export default function SenderDashboard() {
       estimatedValue: '',
     });
     setBookingStep('form');
-    
-    setShowNftReceipt(true);
   };
 
   return (
@@ -634,6 +662,7 @@ export default function SenderDashboard() {
           isOpen={showNftReceipt}
           onClose={() => {
             setShowNftReceipt(false);
+            setBookingReceipt(null);
             setActiveTab('parcels');
             toast({
               title: 'Booking confirmed!',
@@ -645,7 +674,10 @@ export default function SenderDashboard() {
           amount={currentBooking.total}
           status="PENDING"
           timestamp={currentBooking.createdAt.toLocaleString()}
-          nftTokenId={`0.0.${Math.floor(Math.random() * 9000000) + 1000000}`}
+          nftTokenId={bookingReceipt?.tokenId}
+          tokenId={bookingReceipt?.tokenId}
+          serial={bookingReceipt?.serial}
+          hashscanUrl={bookingReceipt?.hashscanUrl}
         />
       )}
     </div>
