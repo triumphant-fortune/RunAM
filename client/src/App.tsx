@@ -7,6 +7,7 @@ import Landing from "@/pages/Landing";
 import SenderDashboard from "@/pages/SenderDashboard";
 import TravelerDashboard from "@/pages/TravelerDashboard";
 import Notifications from "@/pages/Notifications";
+import SupportAdmin from "@/pages/SupportAdmin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path="/sender" component={SenderDashboard} />
       <Route path="/traveler" component={TravelerDashboard} />
       <Route path="/notifications" component={Notifications} />
+      <Route path="/support" component={SupportAdmin} />
       <Route component={NotFound} />
     </Switch>
   );
