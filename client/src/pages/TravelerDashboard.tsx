@@ -4,6 +4,8 @@ import logoImage from '@assets/logo_1761761867719.png';
 import WalletButton from '@/components/WalletButton';
 import ConnectWalletModal from '@/components/ConnectWalletModal';
 import NftReceiptModal from '@/components/NftReceiptModal';
+import { apiRequest } from '@/lib/queryClient';
+import { useWallet } from '@/contexts/WalletContext';
 import { validateRequired, validatePositiveNumber, validateFutureDate } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 
@@ -59,8 +61,15 @@ export default function TravelerDashboard() {
   const [acceptedDeliveries, setAcceptedDeliveries] = useState<AcceptedDelivery[]>([]);
   const [currentTripForMatching, setCurrentTripForMatching] = useState<Trip | null>(null);
   const [showNftReceipt, setShowNftReceipt] = useState(false);
+  const [deliveryReceipt, setDeliveryReceipt] = useState<{
+    tokenId?: string;
+    serial?: number;
+    hashscanUrl?: string;
+    transactionId?: string;
+  } | null>(null);
   const [completedDelivery, setCompletedDelivery] = useState<AcceptedDelivery | null>(null);
   const { toast } = useToast();
+  const { walletAddress } = useWallet();
 
   const [formData, setFormData] = useState<TripFormData>({
     from: '',
@@ -178,8 +187,6 @@ export default function TravelerDashboard() {
 
   const handleMarkAsDelivered = async (delivery: AcceptedDelivery) => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
     const updatedDelivery: AcceptedDelivery = {
       ...delivery,
       delivered: true,
@@ -191,8 +198,27 @@ export default function TravelerDashboard() {
     );
 
     setCompletedDelivery(updatedDelivery);
-    setIsLoading(false);
-    setShowNftReceipt(true);
+    try {
+      const res = await apiRequest('POST', `/api/bookings/${delivery.id}/mint-delivery`, {
+        bookingId: delivery.id.toString(),
+        travelerId: walletAddress || 'demo-traveler',
+      });
+      const receipt = await res.json();
+      setDeliveryReceipt(receipt);
+      setShowNftReceipt(true);
+      toast({
+        title: 'Delivery confirmed on Hedera',
+        description: 'NFT delivery receipt minted. View on HashScan.',
+      });
+    } catch (err: any) {
+      toast({
+        title: 'Mint failed',
+        description: err?.message || 'Could not mint delivery receipt.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const matchingParcels = currentTripForMatching ? getMatchingParcels(currentTripForMatching) : [];
@@ -673,6 +699,7 @@ export default function TravelerDashboard() {
           isOpen={showNftReceipt}
           onClose={() => {
             setShowNftReceipt(false);
+            setDeliveryReceipt(null);
             toast({
               title: 'Delivery completed!',
               description: `You've successfully delivered ${completedDelivery.item}. Your earnings of $${completedDelivery.paymentAmount} USDC have been released.`,
@@ -683,7 +710,10 @@ export default function TravelerDashboard() {
           amount={completedDelivery.paymentAmount}
           status="COMPLETE"
           timestamp={completedDelivery.deliveredAt?.toLocaleString() || new Date().toLocaleString()}
-          nftTokenId={`0.0.${Math.floor(Math.random() * 9000000) + 1000000}`}
+          nftTokenId={deliveryReceipt?.tokenId}
+          tokenId={deliveryReceipt?.tokenId}
+          serial={deliveryReceipt?.serial}
+          hashscanUrl={deliveryReceipt?.hashscanUrl}
         />
       )}
     </div>

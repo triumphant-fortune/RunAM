@@ -15,6 +15,9 @@ interface NftReceiptModalProps {
   status: 'PENDING' | 'COMPLETE';
   timestamp: string;
   nftTokenId?: string;
+  hashscanUrl?: string;
+  serial?: number;
+  tokenId?: string;
 }
 
 export default function NftReceiptModal({
@@ -26,8 +29,13 @@ export default function NftReceiptModal({
   status,
   timestamp,
   nftTokenId = '0.0.9876543',
+  hashscanUrl,
+  serial,
+  tokenId,
 }: NftReceiptModalProps) {
-  const hashscanUrl = `https://hashscan.io/testnet/token/${nftTokenId}`;
+  const resolvedTokenId = tokenId || nftTokenId;
+  const resolvedHashscanUrl =
+    hashscanUrl || `https://hashscan.io/testnet/token/${resolvedTokenId}`;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -83,8 +91,16 @@ export default function NftReceiptModal({
               <div className="pt-2 border-t border-gray-200">
                 <div className="flex justify-between">
                   <span className="text-gray-600">NFT Token ID:</span>
-                  <span className="font-mono text-xs font-medium text-gray-900">{nftTokenId}</span>
+                  <span className="font-mono text-xs font-medium text-gray-900">
+                    {resolvedTokenId}
+                  </span>
                 </div>
+                {serial !== undefined && (
+                  <div className="flex justify-between mt-1">
+                    <span className="text-gray-600">Serial:</span>
+                    <span className="font-mono text-xs font-medium text-gray-900">{serial}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -99,7 +115,7 @@ export default function NftReceiptModal({
           </div>
 
           <a
-            href={hashscanUrl}
+            href={resolvedHashscanUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#FFD700] hover:bg-[#FFD700]/90 text-gray-900 rounded-lg font-medium transition-colors"
