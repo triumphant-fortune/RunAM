@@ -204,6 +204,14 @@ npm install
 ```env
 VITE_HEDERA_ACCOUNT_ID=0.0.xxxxx
 VITE_HEDERA_PRIVATE_KEY=302...
+RUNAM_RECEIPT_TOKEN_ID
+```
+
+To retrieve `RUNAM_RECEIPT_TOKEN_ID`, at the root of your repo: 
+
+```
+set -a; source .env; set +a   # or: export $(grep -v '^#' .env | xargs)
+node --input-type=module -e "import('./src/hedera/hedera-mint.js').then(m=>m.createReceiptCollection()).then(console.log).catch(console.error)"
 ```
 
 2. One-time setup:
